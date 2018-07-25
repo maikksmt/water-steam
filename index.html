@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Great App coming Soon - Water & Steam</title>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+    <!-- Add additional services that you want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-auth.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-functions.js"></script> -->
+
+    <!-- Comment out (or don't include) services that you don't want to use -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-storage.js"></script> -->
+
+    <script>
+        // Initialize Firebase
+        let config = {
+            apiKey: "AIzaSyAKhKWG7LFCw6FJ2R9n53RDT5kQq4cyz7A",
+            authDomain: "water-and-steam.firebaseapp.com",
+            databaseURL: "https://water-and-steam.firebaseio.com",
+            projectId: "water-and-steam",
+            storageBucket: "water-and-steam.appspot.com",
+            messagingSenderId: "83165291568"
+        };
+        firebase.initializeApp(config);
+        // Get a reference to the database service
+        let database = firebase.database();
+
+        function writeUserData() {
+            let email = document.getElementById("email").value;
+            let timestamp = firebase.database.ServerValue.TIMESTAMP;
+            database.ref('users/').push({
+                email: email,
+                timestamp: timestamp
+            });
+        }
+
+    </script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i"
+          rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/coming-soon.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="overlay"></div>
+<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="mp4/bg2.mp4" type="video/mp4">
+</video>
+
+<div class="masthead">
+    <div class="masthead-bg"></div>
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-12 my-auto">
+                <div class="masthead-content text-white py-5 py-md-0">
+                    <h1 class="mb-3">Water&Steam is coming Soon!</h1>
+                    <p class="mb-5">We're working hard to finish the development of this App. Our target launch date is
+                        <strong>October 2019</strong>! Sign up if you want to be informed by us once we have finished
+                        our app!</p>
+                    <div class="input-group input-group-newsletter">
+                        <input type="email" id="email" class="form-control" placeholder="Enter email..."
+                               aria-label="Enter email..." aria-describedby="basic-addon">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" onclick="writeUserData()">Notify Me!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="social-icons">
+    <ul class="list-unstyled text-center mb-0">
+        <li class="list-unstyled-item">
+            <a href="https://twitter.com/maikkusmat" target="_blank">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li class="list-unstyled-item">
+            <a href="mailto:maik.kusmat@me.com" target="_blank">
+                <i class="fa fa-envelope"></i>
+            </a>
+        </li>
+        <li class="list-unstyled-item">
+            <a href="https://www.maik-kusmat.de" target="_blank">
+                <i class="fa fa-home"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/coming-soon.min.js"></script>
+
+</body>
+
+</html>
