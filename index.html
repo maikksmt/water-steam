@@ -13,7 +13,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
     <!-- Add additional services that you want to use -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-auth.js"></script> -->
+    <!--<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-auth.js"></script>-->
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
     <!-- <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-messaging.js"></script>
@@ -36,9 +36,20 @@
         // Get a reference to the database service
         let database = firebase.database();
 
-        function writeUserData(t) {
 
+
+
+        function writeUserData(t) {
+            var usercount = 0;
             let email = document.getElementById("email").value;
+            var usercountref = database.ref("usercount/").on('value', function (snapshot) {
+                usercount = parseInt(snapshot.val());
+                usercount += 1;
+            });
+            database.ref('/').update({
+                    usercount: usercount,
+                });
+
             if ($.trim(email).length === 0) {
                 alert('Please enter valid email address');
                 return false;
@@ -48,7 +59,7 @@
                 let timestamp = firebase.database.ServerValue.TIMESTAMP;
                 database.ref('users/').push({
                     email: email,
-                    timestamp: timestamp
+                    timestamp: timestamp,
                 });
                 document.getElementById('email').value = '';
                 alert('Thanks for your sign up.');
@@ -101,18 +112,24 @@
         <div class="row h-100">
             <div class="col-12 my-auto">
                 <div class="masthead-content text-white py-5 py-md-0">
-                    <h1 class="mb-3">Water&Steam is coming Soon!</h1>
-                    <p class="mb-5">We're working hard to finish the development of this App. Our target launch date is
-                        <strong>October 2019</strong>! Sign up if you want to be informed by us once we have finished
+                    <h1 class="mb-3">Water & Steam is coming Soon!</h1>
+                    <p class="mb-5">We're working hard to finish the development of this App. Water & Steam is an
+                        easy-to-use implementation of <a href="http://www.iapws.org/relguide/IF97-Rev.html"
+                                                         target="_blank">IAPWS IF-97</a>
+                        for mobile devices.<br>
+                        Take a look at our <a href="http://kck.st/2LOiNLy">Kickstarter campaign</a> and get an overview.<br>
+                        Our target launch date is <strong>October 2019</strong>! Sign up if you want to be informed by
+                        us once we have finished
                         our app!</p>
                     <form>
+                        <strong type="text" for="email" id="usercount"></strong><br>
                         <div class="input-group input-group-newsletter">
                             <input type="email" id="email" class="form-control" placeholder="Enter email..."
                                    aria-label="Enter email..." aria-describedby="basic-addon" required>
                             <div class="input-group-append">
                                 <input class="btn btn-secondary" type="submit" id="submit-email"
                                        onclick="writeUserData(this)"
-                                       value="Submit" content="Notify Me!">
+                                       value="Notify me!">
                             </div>
                         </div>
                     </form>
@@ -150,6 +167,14 @@
 
 <!-- Custom scripts for this template -->
 <script src="js/coming-soon.min.js"></script>
+<script>
+    var usercountref = database.ref("usercount/").on('value', function (snapshot) {
+        document.getElementById("usercount").innerHTML = "Become founding member # " + snapshot.val() ;
+    });
+
+
+
+</script>
 
 </body>
 
