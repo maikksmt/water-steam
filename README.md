@@ -18,12 +18,12 @@ This App is in development and not yet available. If you want to be informed by 
 
 ## Usage
 
-The user guide is currently in the making, but its use is intuitive and self-explanatory
+The creation of the user guide is currently ongoing, but its use is intuitive and self-explanatory
 
 
 ## About
 
-**Water & Steam** was created by and is maintained by **[Maik Kusmat](http://www.maik-kusmat.de)**.
+**Water & Steam** is created and maintained by **[Maik Kusmat](http://www.maik-kusmat.de)**.
 
 * http://www.maik-kusmat.de
 * https://twitter.com/maikkusmat
@@ -31,4 +31,4 @@ The user guide is currently in the making, but its use is intuitive and self-exp
 
 ## Copyright and License
 
-Copyright 2018 Maik Kusmat.
+Copyright 2018-2019 Maik Kusmat.
